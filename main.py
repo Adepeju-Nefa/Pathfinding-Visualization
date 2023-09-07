@@ -153,6 +153,7 @@ def construct_path(came_from, current, draw):
 
         draw()
 
+
 def alg( draw, grid, start, end):
     count = 0
     open_set = PriorityQueue()
@@ -204,15 +205,17 @@ def alg( draw, grid, start, end):
                     open_set_hash.add(neighbour)
                     neighbour.create_open_node()
 
-
         draw()
 
         if current != start:
             current.create_close_node()
 
+
     return False
 
+
 def main(win, width):
+
     ROWS = 50
     grid = create_grid(ROWS, width)
 
@@ -260,10 +263,10 @@ def main(win, width):
                             node.update_neighbours(grid)
                     alg(lambda: draw(win, grid, ROWS, width), grid, start, end)
 
-                # if event.key == pygame.k_c:
-                #     start = None
-                #     end = None
-                #     grid = create_grid((ROWS, width))
+                if event.key == pygame.K_c: # clear the screen if 'c' is pressed
+                    start = None
+                    end = None
+                    grid = create_grid(ROWS, width)
 
     pygame.quit()
 
